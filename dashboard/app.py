@@ -3,6 +3,7 @@ import pandas as pd
 import joblib
 
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 import seaborn as sns
 
 st.set_page_config(page_title="Movie Analytics Dashboard", layout="wide")
@@ -47,13 +48,36 @@ tab1, tab2 = st.tabs(["Movie Success Predictor", "Market Insights"])
 
 with tab1:
 
-    st.subheader("Predicted Movie Success")
+    # st.subheader("Predicted Movie Success")
 
-    st.metric("Probability of Success", f"{prob:.2%}")
+    # st.metric("Probability of Success", f"{prob:.2%}")
 
-    st.write("Success defined as movies in the top 25% of revenue.")
+    # st.write("Success defined as movies in the top 25% of revenue.")
 
-    st.progress(prob)
+    # st.progress(prob)
+
+#######################
+    import plotly.graph_objects as go
+
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=prob*100,
+        title={'text': "Chance of Success (Top 25% Revenue) (%)"},
+        gauge={
+            'axis': {'range': [0, 100]},
+            'bar': {'color': "darkblue"},
+            'steps': [
+                {'range': [0, 40], 'color': "#ffcccc"},
+                {'range': [40, 70], 'color': "#fff3cd"},
+                {'range': [70, 100], 'color': "#d4edda"}
+            ]
+        }
+    ))
+
+    st.plotly_chart(fig, use_container_width=True)
+#######################
+
+
 
 with tab2:
 
@@ -70,13 +94,31 @@ with tab2:
 
     ax.set_xscale("log")
     ax.set_yscale("log")
+
+    def money(x, pos):
+        if x >= 1e9:
+            return f'${x/1e9:.0f}B'
+        if x >= 1e6:
+            return f'${x/1e6:.0f}M'
+        if x >= 1e3:
+            return f'${x/1e3:.0f}K'
+        return f'${x:.0f}'
+
+    ax.xaxis.set_major_formatter(ticker.FuncFormatter(money))
+    ax.yaxis.set_major_formatter(ticker.FuncFormatter(money))
+
     ax.set_title("Budget vs Revenue (Log Scale)")
 
     st.pyplot(fig)
 
+    ########################
+
     st.subheader("Revenue by Release Month")
 
     revenue_by_month = df.groupby("release_month")["revenue"].sum()
+
+    mapping_months = {1.0:"January",2.0:"February",3.0:"March",4.0:"April",5.0:"May",6.0:"June",7.0:"July",8.0:"August",9.0:"September",10.0:"October",11.0:"November",12.0:"December",}
+    revenue_by_month.index = revenue_by_month.index.map(mapping_months)
 
     fig2, ax2 = plt.subplots()
 
