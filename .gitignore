@@ -1,4 +1,4 @@
 
 .env
 .ipynp_checkpoints
-data/*.csvdata/
+data/*.csv
