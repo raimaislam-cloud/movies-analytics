@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import seaborn as sns
 
-import gdown
 import os
 
 st.set_page_config(page_title="Movie Analytics Dashboard", layout="wide")
@@ -24,24 +23,10 @@ df = load_data()
 # features = joblib.load("../models/features.pkl")
 # # features = joblib.load("https://drive.google.com/uc?id=1IGnWQM9oPu6lgXNAgujghAHxnQD-qeQj")
 
-# Movie model
-MODEL_URL = "https://drive.google.com/uc?id=1U818Tu3jUmC9kQgvZh_0AlR3UjKdziqa"
-MODEL_PATH = "movie_success_model.pkl"
-
-if not os.path.exists(MODEL_PATH):
-    print("Downloading movie_success_model.pkl...")
-    gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
-
+BASE_DIR = os.path.dirname(__file__)
+MODEL_PATH = os.path.join(BASE_DIR, "..", "models", "movie_success_model.pkl")
+FEATURES_PATH = os.path.join(BASE_DIR, "..", "models", "features.pkl")
 model = joblib.load(MODEL_PATH)
-
-# Features file
-FEATURES_URL = "https://drive.google.com/uc?id=1IGnWQM9oPu6lgXNAgujghAHxnQD-qeQj"
-FEATURES_PATH = "features.pkl"
-
-if not os.path.exists(FEATURES_PATH):
-    print("Downloading features.pkl...")
-    gdown.download(FEATURES_URL, FEATURES_PATH, quiet=False)
-
 features = joblib.load(FEATURES_PATH)
 
 ##############################################################################
