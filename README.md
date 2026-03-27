@@ -15,13 +15,13 @@ A data science project analyzing what drives box office success and predicting h
 - Revenue trends are non-stationary and generally increasing over time
 
 ### Tools
-- Language(s): Python \
-- Data Visualization: Pandas, NumPy, Matplotlib, Seaborn\
-- Machine Learning: Scikit-learn, XGBoost\
-- Time Series: Statsmodels (SARIMAX)\
-- Causal Modeling: Statsmodels (Logit)\
+- Language(s): Python
+- Data Visualization: Pandas, NumPy, Matplotlib, Seaborn
+- Machine Learning: Scikit-learn, XGBoost
+- Time Series: Statsmodels (SARIMAX)
+- Causal Modeling: Statsmodels (Logit)
 
 ### Dashboards
 
-- Streamlit App: [https://movies-analytics.streamlit.app/](https://movies-analytics.streamlit.app/)\
-- Tableau Dashboard: [https://public.tableau.com/views/MovieContentPerformance](https://public.tableau.com/views/MovieContentPerformance/MovieContentPerformance?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+Streamlit App: [https://movies-analytics.streamlit.app/](https://movies-analytics.streamlit.app/)\
+Tableau Dashboard: [https://public.tableau.com/views/MovieContentPerformance](https://public.tableau.com/views/MovieContentPerformance/MovieContentPerformance?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
