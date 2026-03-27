@@ -10,12 +10,12 @@ st.set_page_config(page_title="Movie Analytics Dashboard", layout="wide")
 
 @st.cache_data
 def load_data():
-    return pd.read_csv("./data/ml_movies.csv")
+    return pd.read_csv("../data/ml_movies.csv")
 
 df = load_data()
 
-model = joblib.load("./models/movie_success_model.pkl")
-features = joblib.load("./models/features.pkl")
+model = joblib.load("../models/movie_success_model.pkl")
+features = joblib.load("../models/features.pkl")
 
 ##############################################################################
 
