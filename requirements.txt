@@ -1,8 +1,7 @@
 streamlit
 pandas
 joblib
-matplotlib.pyplot
-matplotlib.ticker
+matplotlib
 seaborn
 numpy
 scikit-learn
