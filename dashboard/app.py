@@ -18,10 +18,7 @@ def load_data():
 df = load_data()
 
 # model = joblib.load("../models/movie_success_model.pkl")
-# # model = joblib.load("https://drive.google.com/uc?id=1U818Tu3jUmC9kQgvZh_0AlR3UjKdziqa")
-
 # features = joblib.load("../models/features.pkl")
-# # features = joblib.load("https://drive.google.com/uc?id=1IGnWQM9oPu6lgXNAgujghAHxnQD-qeQj")
 
 BASE_DIR = os.path.dirname(__file__)
 MODEL_PATH = os.path.join(BASE_DIR, "..", "models", "movie_success_model.pkl")
@@ -35,10 +32,22 @@ st.title("Movie Analytics Dashboard")
 
 st.sidebar.header("Movie Inputs")
 
-budget = st.sidebar.number_input("Budget ($)", 1000000, 300000000, 50000000)
+budget = st.sidebar.number_input("Budget ($)", 1_000_000, 300_000_000, 50_000_000)
+
 release_month = st.sidebar.slider("Release Month", 1,12)
+months = {
+    1: "January", 2: "February", 3: "March", 4: "April",
+    5: "May", 6: "June", 7: "July", 8: "August",
+    9: "September", 10: "October", 11: "November", 12: "December"
+}
+release_month_name = months[release_month]
+st.sidebar.write(f"Selected Month: {release_month_name}")
+st.sidebar.markdown("<br>", unsafe_allow_html=True)
+
 release_year = st.sidebar.slider("Release Year", 1980, 2025, 2020)
 num_top_actors = st.sidebar.slider("Number of Top Actors", 0, 5, 1)
+
+
 
 input_dict = {
     "budget": budget,
