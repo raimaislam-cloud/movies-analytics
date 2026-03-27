@@ -10,7 +10,8 @@ st.set_page_config(page_title="Movie Analytics Dashboard", layout="wide")
 
 @st.cache_data
 def load_data():
-    return pd.read_csv("../data/ml_movies.csv")
+    # return pd.read_csv("../data/ml_movies.csv")
+    return pd.read_csv("https://drive.google.com/uc?id=1JRrRte-rqTEoC04AtGHl4odncoh0_mL4")
 
 df = load_data()
 
