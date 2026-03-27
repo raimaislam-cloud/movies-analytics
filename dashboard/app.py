@@ -15,8 +15,11 @@ def load_data():
 
 df = load_data()
 
-model = joblib.load("../models/movie_success_model.pkl")
-features = joblib.load("../models/features.pkl")
+# model = joblib.load("../models/movie_success_model.pkl")
+model = joblib.load("https://drive.google.com/uc?id=1U818Tu3jUmC9kQgvZh_0AlR3UjKdziqa")
+
+# features = joblib.load("../models/features.pkl")
+features = joblib.load("https://drive.google.com/uc?id=1IGnWQM9oPu6lgXNAgujghAHxnQD-qeQj")
 
 ##############################################################################
 
